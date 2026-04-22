@@ -1,0 +1,68 @@
+import java.util.Scanner;
+
+public class SmartQuiz {
+
+    public static void main(String[] args) {
+
+        Scanner sc = new Scanner(System.in);
+        int score = 0;
+
+        System.out.println("=======================================");
+        System.out.println(" 😎 SMART + FUN QUIZ GAME 😎 ");
+        System.out.println("=======================================\n");
+
+        System.out.print("Enter your name: ");
+        String name = sc.nextLine();
+
+        System.out.println("\nWelcome " + name + "! Ready for some brain workout? 🧠🔥");
+        System.out.println("Get ready for some tough judging 😏\n");
+
+        String[][] questions = {
+                {"What is the capital of India?", "Mumbai", "Delhi", "Kolkata", "Chennai", "2", "Seriously? You don’t know this 😭"},
+                {"Which planet is known as the Red Planet?", "Earth", "Mars", "Jupiter", "Venus", "2", "NASA is disappointed 😑"},
+                {"Who invented Java?", "Dennis Ritchie", "James Gosling", "Bjarne Stroustrup", "Guido van Rossum", "2", "Java developer but don’t know this? 😏"},
+                {"2 + 2 = ?", "22", "4", "Depends", "Calculator", "2", "Even a calculator is judging you 😂"},
+                {"Which data structure uses FIFO?", "Stack", "Queue", "Array", "Tree", "2", "Time to revise DSA 😅"},
+                {"Which company developed Java?", "Microsoft", "Sun Microsystems", "Google", "Apple", "2", "Please revise basic history 📚"}
+        };
+
+        for (int i = 0; i < questions.length; i++) {
+
+            System.out.println("\nQ" + (i + 1) + ". " + questions[i][0]);
+
+            for (int j = 1; j <= 4; j++) {
+                System.out.println(j + ". " + questions[i][j]);
+            }
+
+            System.out.print("Your answer: ");
+            int ans = sc.nextInt();
+
+            if (String.valueOf(ans).equals(questions[i][5])) {
+                System.out.println("✅ Correct! You are smart 😎");
+                score++;
+            } else {
+                System.out.println("❌ Wrong! Correct answer is option " + questions[i][5]);
+                System.out.println("👉 " + questions[i][6]);
+            }
+        }
+
+        System.out.println("\n=======================================");
+        System.out.println(" 🎯 FINAL RESULT ");
+        System.out.println("=======================================");
+        System.out.println("Player: " + name);
+        System.out.println("Score: " + score + "/" + questions.length);
+
+        double percentage = (score * 100.0) / questions.length;
+        System.out.println("Percentage: " + percentage + "%");
+
+        if (percentage >= 80) {
+            System.out.println("🔥 Genius level! You are outstanding!");
+        } else if (percentage >= 50) {
+            System.out.println("👍 Good effort! You can improve more 😄");
+        } else {
+            System.out.println("📚 You seriously need to study more 😂");
+        }
+
+        sc.close();
+    }
+}
